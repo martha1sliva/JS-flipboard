@@ -1,0 +1,65 @@
+var main = function() {
+    /*opens and closes dropdown menu*/
+    $('.dropdown-toggle').click(function() {
+        $('.dropdown-menu').toggle();
+    });
+    
+    /*'Next' arrow functions*/
+    $('.arrow-next').click(function() {
+        /*slide variables*/
+        var currentSlide = $('.active-slide');
+        var nextSlide = currentSlide.next();
+        
+        /*checking if on last slide; if yes, reset to first slide*/
+        if (nextSlide.length==0) {
+            nextSlide = $('.slide').first();
+        };
+        
+        /*fading effect*/
+        currentSlide.fadeOut(600).removeClass('active-slide');
+        nextSlide.fadeIn(600).addClass('active-slide');
+        
+        /*dot variables*/
+        var currentDot = $('.active-dot');
+        var nextDot = currentDot.next();
+        
+        /*checking if on last dot; if yes, reset to first dot*/
+        if (nextDot.length==0) {
+            nextDot = $('.dot').first();
+        };
+        
+        /*rotating dot effect*/
+        currentDot.removeClass('active-dot');
+        nextDot.addClass('active-dot');
+    });
+    
+    /*'Previous' arrow functions*/
+    $('.arrow-prev').click(function() {
+        /*slide variables*/
+        var currentSlide = $('.active-slide');
+        var prevSlide = currentSlide.prev();
+        
+        /*checking if on last slide; if yes, reset to first slide*/
+        if (prevSlide.length==0) {
+            prevSlide = $('.slide').last();
+        };
+        
+        /*fading effect*/
+        currentSlide.fadeOut(600).removeClass('active-slide');
+        prevSlide.fadeIn(600).addClass('active-slide');
+        
+        /*dot variables*/
+        var currentDot = $('.active-dot');
+        var prevDot = currentDot.prev();
+        
+        /*checking if on last dot; if yes, reset to first dot*/
+        if (prevDot.length==0) {
+            prevDot = $('.dot').last();
+        };
+        
+        /*rotating dot effect*/
+        currentDot.removeClass('active-dot');
+        prevDot.addClass('active-dot');
+    });
+};
+$(document).ready(main);
